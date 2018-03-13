@@ -1,0 +1,9 @@
+这个问题实际等同于：用CSS实现由height:0到height:auto的渐变
+
+但height:auto实际并不是一个具体的值，浏览器在执行该动画时还未取到实际值，因此没有渐变的效果；
+
+解决方案：
+1，用js获取其实际值，执行动画；
+
+2，【缺陷】用max-height代替height，max-height设置一个足够大的值，如由max-height:0到max-height:1000px;此时动画会按照0到1000px渐变，视觉效果不好
+
