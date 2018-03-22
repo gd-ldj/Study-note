@@ -23,3 +23,10 @@
 > SyntheticEvent是共享的。那就意味着在调用事件回调之后，SyntheticEvent对象将会被重用，并且所有属性会被置空。这是出于性能因素考虑的。 因此，您无法以异步方式访问事件。
 + 9、我应该在组件的哪个生命周期发送 AJAX 请求?
 > 你应该在 componentDidMount 生命周期方法内发送 AJAX 请求数据。这样你才能够在请求的数据到达时使用 setState 更新你的组件。
+
+10. setState是异步的
+我们可能在一个方法中连续使用多次setState，但由于设置是异步的，我们不能在第二次调用setState方法时拿到第一次调用setState所设置的值，它们的state都是基于最初的state的。
+那么这个问题如何解决呢？
+其实setState还有第二种形式，使用回调函数而非对象的形式去更新state，像这样
+this.setState((prevState,props)=>({counter:prevState.counter + Math.random()}));
+this.setState((prevState,props)=>({counter:prevState.counter + props.increment}))
