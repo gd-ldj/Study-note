@@ -10,3 +10,55 @@ p.then(funciton(){
 }, function(){
   // 只要有失败，则失败 
 })
+
+
+1、promise特点
+Promise，简单来说就是一个容器，里面保存着一个异步事件。在es6中被正式加入。
+
+Promise最大的好处就是将异步处理的执行代码和结果处理代码清晰的分离。
+
+Promise有三种状态pending(进行中)、fulfilled(已成功)、rejected（已失败）
+
+2、基本用法
+promise本质是一个对象
+
+
+var promise = new Promise(function (resolve,reject) {
+    //code
+    if(/*异步操作成功*/){
+        resolve(value);
+    }else{
+        reject(value)
+    }
+});
+
+
+3、Promise对ajax请求进行包装
+
+
+function  ajax(url,method) {
+    return new Promise(function (resovle,reject) {
+        var request;
+        if (window.XMLHttpRequest) {
+            request = new XMLHttpRequest();
+        } else {
+            request = new ActiveXObject('Microsoft.XMLHTTP');
+        }
+        request.onreadystatechange = function () {
+            if(request.readyState == 4){//请求完成
+                if(request.status == 200){
+                    resovle(request.responseText);
+                }else{
+                    reject(request.status);
+                }
+            }
+        }
+        request.open(method,url);
+        request.send();
+    });
+}
+ajax("content.json","GET").then(function (resolve) {
+    console.log(resolve);
+}).catch(function (reject) {
+    console.log(reject);
+});
