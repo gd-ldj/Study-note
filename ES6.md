@@ -21,7 +21,4 @@ a.x = 3;
 const a = {};
 Object.assign(a, { x: 3 });
 
-作者：BrownHu
-链接：https://juejin.im/post/5acb1847f265da237c693362
-来源：掘金
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+JS的第七种基本类型Symbols
