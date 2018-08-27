@@ -1,3 +1,4 @@
+```
 function queryUrlParameter(str) {
     let obj = {}
     let reg = /([^?=&#]+)=([^?=&#]+)/g;
@@ -14,3 +15,4 @@ function queryUrlParameter(str) {
     return obj
 }
 console.log(queryUrlParameter('http://www.baidu.com?a=1&b=2#12222'))  //{ a: '1', b: '2'}
+```
