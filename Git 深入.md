@@ -1,12 +1,24 @@
 1. git branch 用法##
-> git branch   //列出所有的分支
-git branch <branch> //创建名为<branch>的分支，但是不会切换过去
-git branch -d <branch>  //删除指定分支，这是一个“安全”操作，git会阻止你删除包含未合并更改的分支。
-git branch -D <branch>  //强制删除分支
-git branch -m <branch> //重新命名当前分支
-2. 解决冲突
-> 如果两个分支对同一个文件的同一部分均有修改时，git将无法判断应该使用哪个，这时候合并提交会停止，需要你手动解决这些冲突。你可以使用git status来查看哪里存在冲突，很多时候我都会在目录下执行grep -rn HEAD来查看哪些文件里有这个标记，有这个标记的地方都是有冲突的。
-3. 重置暂存区与工作区，与上一次commit保持一致
-$ git reset --hard
-4. 查看最新版本和上一个版本的差异(一个^表示向前推进一个版本)  
- > git diff HEAD HEAD^
+> git branch   //列出所有的分支  
+git branch <branch> //创建名为<branch>的分支，但是不会切换过去  
+git branch -d <branch>  //删除指定分支，这是一个“安全”操作，git会阻止你删除包含未合并更改的分支。  
+git branch -D <branch>  //强制删除分支  
+git branch -m <branch> //重新命名当前分支  
+2. 解决冲突  
+> 如果两个分支对同一个文件的同一部分均有修改时，git将无法判断应该使用哪个，这时候合并提交会停止，需要你手动解决这些冲突。你可以使用git status来查看哪里存在冲突，很多时候我都会在目录下执行grep -rn HEAD来查看哪些文件里有这个标记，有这个标记的地方都是有冲突的。  
+3. 重置暂存区与工作区，与上一次commit保持一致  
+> git reset --hard  
+4. 查看最新版本和上一个版本的差异(一个^表示向前推进一个版本)    
+ > git diff HEAD HEAD^    
+5. 本地仓库链接到远程仓库
+ > `git remote add origin [url]`
+6. 本地仓库修改链接的远程仓库
+  ```
+  git remote remove origin  
+  git remote add origin [url]  
+  或  
+  git remote set-url origin [url]  
+   ```  
+7. 本地仓库查看链接到远程仓库  
+ > `git remote -v`
+ 
