@@ -8,7 +8,6 @@
    ```
  + const、let会在声明地方到块级顶部形成临时性死区，在这区间使用该变量都会被报错
    ```javascript
-   console.log(a)
+   console.log(a) // VM92:1 Uncaught SyntaxError: Identifier 'a' has already been declared
    let a = 1
-  // VM92:1 Uncaught SyntaxError: Identifier 'a' has already been declared
   ```
