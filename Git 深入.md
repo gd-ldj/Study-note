@@ -17,7 +17,9 @@ git reset --hard
 ```
 4. 查看最新版本和上一个版本的差异(一个^表示向前推进一个版本)
 ```js
-git diff HEAD HEAD^    
+git diff HEAD HEAD^  
+
+// 退出ctrl + z
  ```
 5. 本地仓库链接到远程仓库
 ```js
