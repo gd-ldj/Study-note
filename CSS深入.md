@@ -1,7 +1,8 @@
 1. 英文字符断行
 ```
- word-wrap：break-word （    word-break: break-word; ？）
+ word-wrap：break-word （ word-break: break-word; ？）
  overflow-wrap: break-word
+
 ```
 
 2. 元素竖向的百分比设定是相对于容器的高度吗？
