@@ -241,6 +241,49 @@ v-if 可以配合 v-else 、v-else-if使用。v-else必须紧跟在 v-if 或 v-e
   具有 v-show 的元素会始终渲染并保留在 DOM 中。v-show 只会切换元素的 display 这个 CSS 属性。
   > 注意，v-show 无法用于 <template> 元素，也不能和 v-else 配合使用。
 
+
+#### v-if 和 v-show
+使用 v-for 指令，将一个数组渲染为列表项。v-for 指令需要限定格式为 item in items 的特殊语法，其中，items 是原始数据数组(source data array)，而 item 是数组中每个迭代元素的指代别名(alias)：  
+v-for 还支持可选的第二个参数，作为当前项的索引    
+
+可以不使用 in，而是使用 of 作为分隔符，因为它更加接近 JavaScript 迭代器语  
+也可以使用 v-for 来遍历对象的属性。  
+可以提供第二个参数，作为对象的键名(key)
+> 在遍历一个对象时，是按照 Object.keys() 得出 key 的枚举顺序来遍历，无法保证在所有 JavaScript 引擎实现中完全一致。  
+使用v-for时，最好都要加上:key
+```js
+<ul id="example-1">
+  <li v-for="item in items">
+    {{ item.message }}
+  </li>
+</ul>
+
+<ul id="example-2">
+  <li v-for="(item, index) in items">
+    {{ parentMessage }} - {{ index }} - {{ item.message }}
+  </li>
+</ul>
+
+<div v-for="item of items"></div>
+
+<ul id="v-for-object" class="demo">
+  <li v-for="value in object">
+    {{ value }}
+  </li>
+</ul>
+
+<div v-for="(value, key) in object">
+  {{ key }}: {{ value }}
+</div>
+
+<div v-for="(value, key, index) in object">
+  {{ index }}. {{ key }}: {{ value }}
+</div>
+
+<div v-for="item in items" :key="item.id">
+  <!-- content -->
+</div>
+```
 #### 组件系统
 > 在 Vue 中，一个组件本质上是一个被预先定义选项的 Vue 实例
 
