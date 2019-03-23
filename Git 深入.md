@@ -24,7 +24,7 @@ git diff HEAD HEAD^
 5. 本地仓库链接到远程仓库
 ```js
  git remote add origin [url]
- 
+ ```
 6. 本地仓库修改链接的远程仓库
   ```js
   git remote remove origin  
