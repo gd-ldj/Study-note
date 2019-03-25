@@ -64,7 +64,7 @@ vm.$watch('a', function (newValue, oldValue) {
 > 在控制台里可以修改app.message的值
 > 不要在选项属性或者回调函数中使用箭头函数（例如，created: () => console.log(this.a) 或 vm.$watch('a', newValue => this.myMethod())）。因为箭头函数会绑定父级上下文，所以 this 不会按照预期指向 Vue 实例，经常会产生一些错误
 生命周期示意图
-![生命周期](https://vue.docschina.org/images/lifecycle.png =200x)
+![生命周期](https://vue.docschina.org/images/lifecycle.png)
 所有的钩子函数在调用时，其 this 上下文都会指向调用它的 Vue 实例
 
 #### 模板语法
@@ -81,60 +81,60 @@ Vue.js 使用基于 HTML 的模板语法，允许声明式地将要渲染的 DOM
     ```js
     <span v-once>这里的值永远不会改变：{{ Message }}</span>
     ```
-+ 原始 HTML(Raw HTML)
-  双花括号语法，会将数据中的 HTML 转为纯文本后再进行插值。为了输出真正的 HTML，你需要使用 v-html 指令：
-  ```js
-  <p>使用双花括号语法：{{ rawHtml }}</p>
-  <p>使用 v-html 指令：<span v-html="rawHtml"></span></p>
-  ```
-  > 在网站中动态渲染任意的 HTML 是非常危险的，因为这很容易导致网站受到 XSS 攻击。请只对可信内容使用 HTML 插值，绝对不要对用户提供的内容使用 HTML 插值。
-+ 属性(Attributes)
-  ```html
-  <div v-bind:id="dynamicId"></div>
-  ```
-+ 使用 JavaScript 表达式
-  Vue.js 实际上能够支持通过完整的 JavaScript 表达式，将模板与任意的数据绑定在一起
-  ```js
-  {{ number + 1 }}
+  + 原始 HTML(Raw HTML)
+    双花括号语法，会将数据中的 HTML 转为纯文本后再进行插值。为了输出真正的 HTML，你需要使用 v-html 指令：
+    ```js
+    <p>使用双花括号语法：{{ rawHtml }}</p>
+    <p>使用 v-html 指令：<span v-html="rawHtml"></span></p>
+    ```
+    > 在网站中动态渲染任意的 HTML 是非常危险的，因为这很容易导致网站受到 XSS 攻击。请只对可信内容使用 HTML 插值，绝对不要对用户提供的内容使用 HTML 插值。
+  + 属性(Attributes)
+    ```html
+    <div v-bind:id="dynamicId"></div>
+    ```
+  + 使用 JavaScript 表达式
+    Vue.js 实际上能够支持通过完整的 JavaScript 表达式，将模板与任意的数据绑定在一起
+    ```js
+    {{ number + 1 }}
 
-  {{ ok ? 'YES' : 'NO' }}
+    {{ ok ? 'YES' : 'NO' }}
 
-  {{ message.split('').reverse().join('') }}
+    {{ message.split('').reverse().join('') }}
 
-  <div v-bind:id="'list-' + id"></div>
-  ```
-  每个绑定都只能包含单个表达式，所以以下示例都无法运行
-  ```js
-  <!-- 这是语句，不是表达式 -->
-  {{ var a = 1 }}
+    <div v-bind:id="'list-' + id"></div>
+    ```
+    每个绑定都只能包含单个表达式，所以以下示例都无法运行
+    ```js
+    <!-- 这是语句，不是表达式 -->
+    {{ var a = 1 }}
 
-  <!-- 流控制也无法运行，请使用三元表达式 -->
-  {{ if (ok) { return message } }}
-  ```
-    
-+ 指令系统
-  v-都是vue封装好的指令，可以直接绑定到DOM上使用
-  ```js
-  <p v-if="seen">Now you see me</p>
-  ```
-  + v-bind：传递属性  简写 :
-  + v-if 控制元素的显示
-  + v-for 遍历数组的元素展示
-  + v-on:  绑定事件 简写 @
-  + v-model 表单输入和应用程序状态之间的双向绑定
+    <!-- 流控制也无法运行，请使用三元表达式 -->
+    {{ if (ok) { return message } }}
+    ```
 
-+ 参数(Arguments)
-  一些指令能够接收一个“参数”，在指令名称之后以 : 表示
-  ```js
-  <a v-bind:href="url"> ... </a>
-  <a v-on:click="doSomething"> ... </a>
-  ```
-+ 修饰符(Modifiers)
-  修饰符(modifier)是以 . 表示的特殊后缀，表明应当以某种特殊方式绑定指令。
-  ```js
-  <form v-on:submit.prevent="onSubmit"> ... </form>
-  // .prevent 修饰符告诉 v-on 指令，在触发事件后调用 event.preventDefault()
-  ```
+  + 指令系统
+    v-都是vue封装好的指令，可以直接绑定到DOM上使用
+    ```js
+    <p v-if="seen">Now you see me</p>
+    ```
+    + v-bind：传递属性  简写 :
+    + v-if 控制元素的显示
+    + v-for 遍历数组的元素展示
+    + v-on:  绑定事件 简写 @
+    + v-model 表单输入和应用程序状态之间的双向绑定
+
+  + 参数(Arguments)
+    一些指令能够接收一个“参数”，在指令名称之后以 : 表示
+    ```js
+    <a v-bind:href="url"> ... </a>
+    <a v-on:click="doSomething"> ... </a>
+    ```
+  + 修饰符(Modifiers)
+    修饰符(modifier)是以 . 表示的特殊后缀，表明应当以某种特殊方式绑定指令。
+    ```js
+    <form v-on:submit.prevent="onSubmit"> ... </form>
+    // .prevent 修饰符告诉 v-on 指令，在触发事件后调用 event.preventDefault()
+    ```
 ### computed 属性和 watcher
 + computed
   像绑定普通属性一样，可以将 computed 属性的数据，绑定(data-bind)到模板中的表达式上。  
@@ -222,8 +222,9 @@ v-if 是惰性的(lazy)：如果在初始渲染时条件为 false，它不会执
 
 相比之下，v-show 要简单得多 - 不管初始条件如何，元素始终渲染，并且只是基于 CSS 的切换。
 
-通常来说，v-if 在切换时有更高的性能开销，而 v-show 在初始渲染时有更高的性能开销。因此，如果需要频繁切换，推荐使用 v-show，如果条件在运行时改变的可能性较少，推荐使用 v-if。
-+ v-if
+通常来说，v-if 在切换时有更高的性能开销，而 v-show 在初始渲染时有更高的性能开销。因此，如果需要频繁切换，推荐使用 v-show，如果条件在运行时改变的可能性较少，推荐使用 v-if。  
++ v-if  
+
 v-if 可以配合 v-else 、v-else-if使用。v-else必须紧跟在 v-if 或 v-else-if 元素之后 - 否则无法识别它
 由于 v-if 是一个指令，因此必须将其附加到一个单独的元素上。但是如果我们想要切换多个元素呢？在这种场景中，我们可以将 <template> 元素，作为多个元素的无形容器  
   使用 key 控制元素是否可复用
@@ -241,7 +242,8 @@ v-if 可以配合 v-else 、v-else-if使用。v-else必须紧跟在 v-if 或 v-e
   
  + v-show
   具有 v-show 的元素会始终渲染并保留在 DOM 中。v-show 只会切换元素的 display 这个 CSS 属性。
-  > 注意，v-show 无法用于 <template> 元素，也不能和 v-else 配合使用。
+  > 注意，v-show 无法用于 template 元素，也不能和 v-else 配合使用。  
+  
 
 #### v-if 和 v-show
 使用 v-for 指令，将一个数组渲染为列表项。v-for 指令需要限定格式为 item in items 的特殊语法，其中，items 是原始数据数组(source data array)，而 item 是数组中每个迭代元素的指代别名(alias)：  
