@@ -62,7 +62,8 @@ vm.$watch('a', function (newValue, oldValue) {
 })
 ```
 > 在控制台里可以修改app.message的值
-> 不要在选项属性或者回调函数中使用箭头函数（例如，created: () => console.log(this.a) 或 vm.$watch('a', newValue => this.myMethod())）。因为箭头函数会绑定父级上下文，所以 this 不会按照预期指向 Vue 实例，经常会产生一些错误
+> 不要在选项属性或者回调函数中使用箭头函数（例如，created: () => console.log(this.a) 或 vm.$watch('a', newValue => this.myMethod())）。因为箭头函数会绑定父级上下文，所以 this 不会按照预期指向 Vue 实例，经常会产生一些错误  
+
 生命周期示意图
 ![生命周期](https://vue.docschina.org/images/lifecycle.png)
 所有的钩子函数在调用时，其 this 上下文都会指向调用它的 Vue 实例
