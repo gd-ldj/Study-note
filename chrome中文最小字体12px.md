@@ -1,2 +1,0 @@
-Chrome 中文界面下默认会将小于 12px 的文本强制按照 12px 显示,  
-可通过加入 CSS 属性 -webkit-text-size-adjust: none; 解决。
