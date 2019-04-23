@@ -11,3 +11,4 @@
    console.log(a) // VM92:1 Uncaught SyntaxError: Identifier 'a' has already been declared
    let a = 1
   ```
+  blog
