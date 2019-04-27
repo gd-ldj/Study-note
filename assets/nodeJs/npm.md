@@ -1,0 +1,38 @@
+报错内容
+```
+npm WARN deprecated browserslist@1.7.7: Browserslist 2 could fail on reading Browserslist >3.0 config used in other tools.
+npm WARN checkPermissions Missing write access to /usr/local/lib/node_modules
+npm ERR! path /usr/local/lib/node_modules
+npm ERR! code EACCES
+npm ERR! errno -13
+npm ERR! syscall access
+npm ERR! Error: EACCES: permission denied, access '/usr/local/lib/node_modules'
+npm ERR!  { [Error: EACCES: permission denied, access '/usr/local/lib/node_modules']
+npm ERR!   stack:
+npm ERR!    'Error: EACCES: permission denied, access \'/usr/local/lib/node_modules\'',
+npm ERR!   errno: -13,
+npm ERR!   code: 'EACCES',
+npm ERR!   syscall: 'access',
+npm ERR!   path: '/usr/local/lib/node_modules' }
+npm ERR!
+npm ERR! The operation was rejected by your operating system.
+npm ERR! It is likely you do not have the permissions to access this file as the current user
+npm ERR!
+npm ERR! If you believe this might be a permissions issue, please double-check the
+npm ERR! permissions of the file and its containing directories, or try running
+npm ERR! the command again as root/Administrator (though this is not recommended).
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /Users/gd/.npm/_logs/2018-12-01T04_13_21_746Z-debug.log
+```
+解决办法
+```
+# 第一步：在你的用户文件下新建一个文件夹，这个.npm-global 名字可以用你自己喜欢的名字替换，推荐直接使用这个名字。
+mkdir ~/.npm-global
+#第二步：更改node的安装连接
+npm config set prefix '~/.npm-global'
+#第三步：在用户的profile下增加path，为的是系统能够找到可执行文件的目录
+ export PATH=~/.npm-global/bin:$PATH
+#第四步：update profile。使其生效
+source ~/.profile
+```
