@@ -108,3 +108,44 @@ handleSomething() {
   this.incrementCount(); // count 现在是 3
 }
 ```
+
+## 第四遍学习react官方文档收获（16.8.6）
++ 动态 import() 语法
+> 动态 import() 语法目前只是一个 ECMAScript (JavaScript) 提案， 而不是正式的语法标准
+```js
+// 正常导入
+import { add } from './math';
+console.log(add(16, 26));
+
+// 动态导入
+import("./math").then(math => {
+  console.log(math.add(16, 26));
+});
+```
+
++ React.lazy 和 Suspense
+React.lazy 函数能让你像渲染常规组件一样处理动态引入（的组件）  
+当React.lazy的模块还没被加载完成时，可以使用Suspense加载指示器为此组件做优雅降级
+> React.lazy 和 Suspense 技术还不支持服务端渲染
+```js
+// 正常加载
+import OtherComponent from './OtherComponent';
+
+// 动态加载
+const OtherComponent = React.lazy(() => import('./OtherComponent'));
+
+// 优雅降级
+const OtherComponent = React.lazy(() => import('./OtherComponent'));
+
+function MyComponent() {
+  return (
+    <div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <OtherComponent />
+      </Suspense>
+    </div>
+  );
+}
+
+```
+
