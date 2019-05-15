@@ -17,7 +17,29 @@ function queryUrlParameter(str) {
 }
 console.log(queryUrlParameter('http://www.baidu.com?a=1&b=2#12222'))  //{ a: '1', b: '2'}
 ```
-尽可能的全面正确的解析一个任意 url 的所有参数为 Object，注意边界条件的处理。
+## 获取url上name的值
+```js
+const getParam = function(name){  
+  const search = document.location.search;  
+  const pattern = new RegExp("[?&]"+name+"\=([^&]+)", "g");  
+  const matcher = pattern.exec(search);  
+  let items = null;  
+  if(null != matcher){  
+    try{  
+      items = decodeURIComponent(decodeURIComponent(matcher[1]));  
+    }catch(e){  
+      try{  
+        items = decodeURIComponent(matcher[1]);  
+      }catch(e){  
+        items = matcher[1];  
+      }  
+    }  
+  }  
+  return items;  
+};  
+```
+
+## 尽可能的全面正确的解析一个任意 url 的所有参数为 Object，注意边界条件的处理。
 ```js
 let url = 'http://www.domain.com/?user=anonymous&id=123&id=456&city=%E5%8C%97%E4%BA%AC&enabled';
 parseParam(url)
