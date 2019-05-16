@@ -148,4 +148,18 @@ function MyComponent() {
 }
 
 ```
-
++ Fragments
+Fragments 允许你将子列表分组，而无需向 DOM 添加额外节点。 
+> key 是唯一可以传递给 Fragment 的属性
+> Fragments和短语法<>的功能相同，但<>尚未得到所有流行工具的支持,慎用
+```js
+render() {
+  return (
+    <React.Fragment>
+      <ChildA />
+      <ChildB />
+      <ChildC />
+    </React.Fragment>
+  );
+}
+```
